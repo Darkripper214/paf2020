@@ -179,7 +179,6 @@ app.post('/api/post', upload.single('imageFile'), async (req, res) => {
             .collection(MONGO_COLLECTION)
             .insertOne(doc)
             .then((results) => {
-              console.log(results);
               // delete the temp file when no error from MONGO & AWS S3
               fs.unlink(req.file.path, () => {});
               // return the inserted object
